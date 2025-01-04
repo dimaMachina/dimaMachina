@@ -1,14 +1,14 @@
 {
-  "name": "@dimamachina/blog",
+  "name": "blog",
+  "description": "dimaMachina.com blog website",
+  "author": "Dimitri POSTOLOV",
+  "license": "MIT",
   "scripts": {
     "build": "next build",
     "dev": "next --turbopack",
     "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind",
     "start": "next start"
   },
-  "author": "Dimitri POSTOLOV",
-  "license": "MIT",
-  "description": "dimaMachina.com blog website",
   "dependencies": {
     "next": "15.1.3",
     "nextra": "4.0.0-app-router.42",
