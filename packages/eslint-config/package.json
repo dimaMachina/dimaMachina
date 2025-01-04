@@ -1,5 +1,5 @@
 {
-  "name": "@nextra/eslint-config",
+  "name": "@dimamachina/eslint-config",
   "version": "0.0.0",
   "type": "module",
   "private": true,
