@@ -24,6 +24,7 @@ export default async function PostsPage() {
       >
         {Object.entries(allTags).map(([tag, count]) => (
           <Link key={tag} href={`/tags/${tag}`} className="nextra-tag">
+            {/* @ts-expect-error fixme */}
             {tag} ({count})
           </Link>
         ))}

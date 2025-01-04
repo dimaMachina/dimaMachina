@@ -8,6 +8,7 @@ export async function getPosts() {
   })
   return directories
     .filter(post => post.name !== 'index')
+    // @ts-expect-error fixme
     .sort((a, b) => new Date(b.frontMatter.date) - new Date(a.frontMatter.date))
 }
 

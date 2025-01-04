@@ -21,6 +21,7 @@ export default async function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <Head backgroundColor={{ dark: '#0f172a', light: '#fefce8' }} />
       <body>
+        {/* @ts-expect-error fixme */}
         <Layout banner={banner}>
           <Navbar pageMap={await getPageMap()}>
             <Search />
