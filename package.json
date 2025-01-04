@@ -2,5 +2,6 @@
   "scripts": {},
   "author": "Dimitri POSTOLOV",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "packageManager": "pnpm@9.15.2"
 }
