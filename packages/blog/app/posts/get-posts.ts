@@ -6,10 +6,14 @@ export async function getPosts() {
     list: await getPageMap('/posts'),
     route: '/posts'
   })
-  return directories
-    .filter(post => post.name !== 'index')
-    // @ts-expect-error fixme
-    .sort((a, b) => new Date(b.frontMatter.date) - new Date(a.frontMatter.date))
+  return (
+    directories
+      .filter(post => post.name !== 'index')
+      .sort(
+        // @ts-expect-error fixme
+        (a, b) => new Date(b.frontMatter.date) - new Date(a.frontMatter.date)
+      )
+  )
 }
 
 export async function getTags() {
