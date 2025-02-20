@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "next-view-transitions": "^0.3.4",
     "@next/third-parties": "^15.1.7",
     "next": "15.1.7",
     "nextra": "4.2.13",

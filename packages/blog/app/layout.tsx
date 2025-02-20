@@ -1,7 +1,7 @@
 import { GoogleTagManager } from '@next/third-parties/google'
 import { Metadata } from 'next'
 import NextLink from 'next/link'
-import { Footer, Layout, Navbar, ThemeSwitch } from 'nextra-theme-blog'
+import { Footer, Layout, Navbar, ThemeSwitch } from './_nextra-theme'
 import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import { FC, ReactNode } from 'react'

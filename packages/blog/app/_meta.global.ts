@@ -12,6 +12,9 @@ export default {
   },
   gallery: {
     type: 'page'
+  },
+  talks: {
+    type: 'page'
   }
   // sponsor: {
   //   type: 'page',

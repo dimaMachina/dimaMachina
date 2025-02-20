@@ -1,4 +1,6 @@
-@import 'tailwindcss' source(none) prefix(x);
+@import '../../node_modules/tailwindcss'
+
+source(none) prefix(  x);
 
 @source './**/*.{ts,tsx}';
 
