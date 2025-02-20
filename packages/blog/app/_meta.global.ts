@@ -12,5 +12,10 @@ export default {
   },
   gallery: {
     type: 'page'
-  },
+  }
+  // sponsor: {
+  //   type: 'page',
+  //   title: 'Sponsor ❤️',
+  //   href: 'https://github.com/sponsors/dimaMachina'
+  // }
 }

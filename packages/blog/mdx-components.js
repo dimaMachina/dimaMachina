@@ -3,12 +3,7 @@ import { useMDXComponents as getBlogMDXComponents } from 'nextra-theme-blog'
 const blogComponents = getBlogMDXComponents({
   h1: ({ children }) => (
     <h1
-      style={{
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
-        backgroundImage: 'linear-gradient(90deg,#7928CA,#FF0080)'
-      }}
+      className="headline"
     >
       {children}
     </h1>
