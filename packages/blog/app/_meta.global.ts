@@ -2,7 +2,7 @@ export default {
   index: {
     type: 'page'
   },
-  blog: {
+  blogs: {
     type: 'page',
     items: {
       draft: {
@@ -12,10 +12,13 @@ export default {
   },
   gallery: {
     type: 'page'
+  },
+  talks: {
+    type: 'page'
+  },
+  sponsor: {
+    type: 'page',
+    title: 'Sponsor ❤️',
+    href: 'https://github.com/sponsors/dimaMachina'
   }
-  // sponsor: {
-  //   type: 'page',
-  //   title: 'Sponsor ❤️',
-  //   href: 'https://github.com/sponsors/dimaMachina'
-  // }
 }
