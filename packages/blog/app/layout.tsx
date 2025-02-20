@@ -1,3 +1,4 @@
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Metadata } from 'next'
 import NextLink from 'next/link'
 import { Footer, Layout, Navbar, ThemeSwitch } from 'nextra-theme-blog'
@@ -80,6 +81,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
           </Footer>
         </Layout>
       </body>
+      <GoogleTagManager gtmId="GTM-MKDZX82P" />
     </html>
   )
 }

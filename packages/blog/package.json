@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/third-parties": "^15.1.7",
     "next": "15.1.7",
     "nextra": "4.2.13",
     "nextra-theme-blog": "4.2.13",
