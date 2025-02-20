@@ -9,5 +9,8 @@ export default {
         display: 'hidden'
       }
     }
-  }
+  },
+  gallery: {
+    type: 'page'
+  },
 }

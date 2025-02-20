@@ -1,10 +1,38 @@
 import { Footer, Layout, Navbar, ThemeSwitch } from 'nextra-theme-blog'
 import { Banner, Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
+import { Metadata } from 'next'
 import 'nextra-theme-blog/style.css'
 
-export const metadata = {
-  title: 'Blog Example'
+const appName = 'dimaMachina'
+
+export const metadata: Metadata = {
+  // description: `${appName} - ${description}`,
+  generator: 'Next.js',
+  applicationName: appName,
+  appleWebApp: {
+    title: appName,
+  },
+  title: {
+    default: appName,
+    template: `%s | ${appName}`,
+  },
+  openGraph: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    url: './',
+    locale: 'en_US',
+    type: 'website',
+    siteName: appName,
+  },
+  twitter: {
+    site: 'https://x.com/dimaMachina_',
+    card: 'summary_large_image',
+    creator: '@dimaMachina_',
+  },
+  alternates: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    canonical: './',
+  },
 }
 
 export default async function RootLayout({ children }) {
@@ -19,31 +47,30 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head backgroundColor={{ dark: '#0f172a', light: '#fefce8' }} />
-      <body>
-        {/* @ts-expect-error fixme */}
-        <Layout banner={banner}>
-          <Navbar pageMap={await getPageMap()}>
-            <Search />
-            <ThemeSwitch />
-          </Navbar>
+    <Head backgroundColor={{ dark: '#0f172a', light: '#fefce8' }} />
+    <body>
+    <Layout banner={banner}>
+      <Navbar pageMap={await getPageMap()}>
+        <Search />
+        <ThemeSwitch />
+      </Navbar>
 
-          {children}
+      {children}
 
-          <Footer>
-            <abbr
-              title="This site and all its content are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
-              style={{ cursor: 'help' }}
-            >
-              CC BY-NC 4.0
-            </abbr>{' '}
-            {new Date().getFullYear()} © Dimitri POSTOLOV.
-            <a href="/feed.xml" style={{ float: 'right' }}>
-              RSS
-            </a>
-          </Footer>
-        </Layout>
-      </body>
+      <Footer>
+        <abbr
+          title="This site and all its content are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+          style={{ cursor: 'help' }}
+        >
+          CC BY-NC 4.0
+        </abbr>{' '}
+        {new Date().getFullYear()} © Dimitri POSTOLOV.
+        <a href="/feed.xml" style={{ float: 'right' }}>
+          RSS
+        </a>
+      </Footer>
+    </Layout>
+    </body>
     </html>
   )
 }
