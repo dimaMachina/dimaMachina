@@ -25,6 +25,7 @@ export default async function TagPage(props) {
           post.frontMatter.tags.includes(decodeURIComponent(params.tag))
         )
         .map(post => (
+          // @ts-expect-error -- fixme in Nextra
           <PostCard key={post.route} post={post} />
         ))}
     </>

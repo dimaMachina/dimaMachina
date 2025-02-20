@@ -30,6 +30,7 @@ export default async function PostsPage() {
         ))}
       </div>
       {posts.map(post => (
+        // @ts-expect-error -- fixme in Nextra
         <PostCard key={post.route} post={post} />
       ))}
     </div>
