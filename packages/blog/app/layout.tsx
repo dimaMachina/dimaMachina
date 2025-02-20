@@ -46,11 +46,18 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
       <NextLink
         href="https://x.com/dimaMachina_"
         target="_blank"
-        rel="noreferrer" className="x:text-primary-600"
+        rel="noreferrer"
+        className="x:text-primary-600"
       >
         𝕏
       </NextLink>{' '}
-      or <NextLink href="mailto:dmytropostolov@gmail.com" className="x:text-primary-600">email</NextLink>
+      or{' '}
+      <NextLink
+        href="mailto:dmytropostolov@gmail.com"
+        className="x:text-primary-600"
+      >
+        email
+      </NextLink>
     </Banner>
   )
 
