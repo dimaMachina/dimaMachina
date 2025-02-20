@@ -1,6 +1,6 @@
 .headline {
   display: inline-flex;
-  font-size: min(3.5rem, max(8vw, 2.5rem));
+  font-size: min(3.2rem, max(8vw, 2.5rem));
   font-weight: 700;
   font-feature-settings: initial;
   letter-spacing: -0.12rem;

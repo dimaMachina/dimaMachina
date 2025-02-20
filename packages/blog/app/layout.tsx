@@ -66,10 +66,10 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
           {children}
 
           <Footer>
-            {new Date().getFullYear()} © Dimitri POSTOLOV.
-            <a href="/feed.xml" style={{ float: 'right' }}>
-              RSS
-            </a>
+            {new Date().getFullYear()} © Dimitri POSTOLOV
+            {/*<a href="/feed.xml" style={{ float: 'right' }}>*/}
+            {/*  RSS*/}
+            {/*</a>*/}
           </Footer>
         </Layout>
       </body>
