@@ -3,7 +3,7 @@ import { getPageMap } from 'nextra/page-map'
 
 export async function getPosts() {
   const { directories } = normalizePages({
-    list: await getPageMap('/posts'),
+    list: await getPageMap('/blog'),
     route: '/posts'
   })
   return (
