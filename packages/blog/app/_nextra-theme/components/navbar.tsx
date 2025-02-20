@@ -16,7 +16,10 @@ export const Navbar: FC<NavbarProps> = ({ children, pageMap }) => {
       data-pagefind-ignore="all"
     >
       {topLevelNavbarItems.map(nav => (
-        <NavbarLink key={nav.route} href={nav.route}>
+        <NavbarLink
+          key={nav.route}
+          href={('href' in nav && nav.href) || nav.route}
+        >
           {nav.title}
         </NavbarLink>
       ))}

@@ -4,9 +4,13 @@ import type { ComponentProps, FC, ReactElement, ReactNode } from 'react'
 
 export const Footer: FC<{
   children?: ReactNode
-}> = ({ children }) => {
+  className?: string
+}> = ({ children, className = '' }) => {
   return (
-    <small className="x:mt-32 x:block" data-pagefind-ignore="all">
+    <small
+      className={'x:mt-32 x:block ' + className}
+      data-pagefind-ignore="all"
+    >
       {children || `CC BY-NC 4.0 ${new Date().getFullYear()} © Shu Ding.`}
     </small>
   )

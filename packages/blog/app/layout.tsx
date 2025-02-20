@@ -1,10 +1,13 @@
 import { GoogleTagManager } from '@next/third-parties/google'
 import { Metadata } from 'next'
 import NextLink from 'next/link'
-import { Footer, Layout, Navbar, ThemeSwitch } from './_nextra-theme'
 import { Banner, Head } from 'nextra/components'
+import { GitHubIcon } from 'nextra/icons'
 import { getPageMap } from 'nextra/page-map'
 import { FC, ReactNode } from 'react'
+import LinkedInIcon from './_icons/linkedin.svg?svgr'
+import TwitterIcon from './_icons/twitter.svg?svgr'
+import { Footer, Layout, Navbar, ThemeSwitch } from './_nextra-theme'
 import './globals.css'
 
 const appName = 'dimaMachina'
@@ -63,7 +66,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head backgroundColor={{ dark: '#000', light: 'rgb(250, 250, 250)' }} />
+      <Head backgroundColor={{ dark: '#000', light: '#fafafa' }} />
       <body>
         <Layout banner={banner}>
           <Navbar pageMap={pageMap}>
@@ -72,11 +75,34 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
 
           {children}
 
-          <Footer>
+          <Footer className="flex justify-between">
             {new Date().getFullYear()} © Dimitri POSTOLOV
             {/*<a href="/feed.xml" style={{ float: 'right' }}>*/}
             {/*  RSS*/}
             {/*</a>*/}
+            <div className="flex gap-4 *:hover:text-[--x-color-primary-600]">
+              <NextLink
+                href="https://github.com/dimaMachina"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GitHubIcon height="22px" />
+              </NextLink>
+              <NextLink
+                href="https://x.com/dimaMachina_"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <TwitterIcon height="22px" />
+              </NextLink>
+              <NextLink
+                href="https://www.linkedin.com/in/postolov"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LinkedInIcon height="22px" />
+              </NextLink>
+            </div>
           </Footer>
         </Layout>
       </body>

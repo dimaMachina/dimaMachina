@@ -15,10 +15,10 @@ export default {
   },
   talks: {
     type: 'page'
+  },
+  sponsor: {
+    type: 'page',
+    title: 'Sponsor ❤️',
+    href: 'https://github.com/sponsors/dimaMachina'
   }
-  // sponsor: {
-  //   type: 'page',
-  //   title: 'Sponsor ❤️',
-  //   href: 'https://github.com/sponsors/dimaMachina'
-  // }
 }
