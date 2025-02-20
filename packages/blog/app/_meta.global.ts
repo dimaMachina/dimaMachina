@@ -2,7 +2,7 @@ export default {
   index: {
     type: 'page'
   },
-  blog: {
+  blogs: {
     type: 'page',
     items: {
       draft: {

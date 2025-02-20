@@ -6,7 +6,6 @@ import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import { FC, ReactNode } from 'react'
 import './globals.css'
-import 'nextra-theme-blog/style.css'
 
 const appName = 'dimaMachina'
 

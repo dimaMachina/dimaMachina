@@ -1,3 +1,9 @@
+@import 'nextra-theme-blog/style.css';
+@import 'tailwindcss';
+
+@theme {
+}
+
 .headline {
   display: inline-flex;
   font-size: min(3.2rem, max(8vw, 2.5rem));
