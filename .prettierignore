@@ -1,2 +1,3 @@
 pnpm-lock.yaml
+packages/blog/public/images/next-image-export-optimizer-hashes.json
 packages/blog/src/app/gallery/images.mdx

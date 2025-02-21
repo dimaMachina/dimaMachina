@@ -1,4 +1,5 @@
-import { Link } from 'next-view-transitions'
+import NextLink from 'next/link'
+import { Anchor } from 'nextra/components'
 import type { FC } from 'react'
 import type { BlogMetadata } from '../types'
 
@@ -19,17 +20,22 @@ export const PostCard: FC<PostCardProps> = ({
   return (
     <div key={post.route}>
       <h2 className="x:mt-6 x:mb-2 x:text-xl x:font-semibold">
-        <Link href={post.route} className="x:no-underline!">
+        <NextLink
+          href={post.route}
+          className="x:no-underline!"
+          target="_blank"
+          rel="noreferrer"
+        >
           {title}
-        </Link>
+        </NextLink>
       </h2>
       {description && (
         <p className="x:mb-2 x:dark:text-gray-400 x:text-gray-600">
           {description}
           {readMore && (
-            <Link href={post.route} className="x:ml-2">
+            <Anchor href={post.route} className="x:ml-2">
               {readMore}
-            </Link>
+            </Anchor>
           )}
         </p>
       )}

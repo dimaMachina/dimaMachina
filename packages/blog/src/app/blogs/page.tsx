@@ -1,11 +1,12 @@
-import { Metadata } from 'next'
 import Link from 'next/link'
-import { PostCard } from 'nextra-theme-blog'
+import { NextraMetadata } from 'nextra'
+import { PostCard } from '../../nextra-theme/components/post-card'
 import { getPosts, getTags } from './get-posts'
 
 export const metadata = {
-  title: 'Blog'
-} satisfies Metadata
+  title: 'Blog',
+  asIndexPage: true
+} satisfies NextraMetadata
 
 export default async function PostsPage() {
   const tags = await getTags()
@@ -35,8 +36,7 @@ export default async function PostsPage() {
         ))}
       </div>
       {posts.map(post => (
-        // @ts-expect-error -- fixme in Nextra
-        <PostCard key={post.route} post={post} />
+        <PostCard key={post.route} post={post} readMore="Read More" />
       ))}
     </div>
   )
