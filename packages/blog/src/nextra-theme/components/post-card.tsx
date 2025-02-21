@@ -1,6 +1,6 @@
-import { Link } from 'next-view-transitions'
 import type { FC } from 'react'
 import type { BlogMetadata } from '../types'
+import { Anchor } from 'nextra/components'
 
 type PostCardProps = {
   post: {
@@ -19,17 +19,17 @@ export const PostCard: FC<PostCardProps> = ({
   return (
     <div key={post.route}>
       <h2 className="x:mt-6 x:mb-2 x:text-xl x:font-semibold">
-        <Link href={post.route} className="x:no-underline!">
+        <Anchor href={post.route} className="x:no-underline!">
           {title}
-        </Link>
+        </Anchor>
       </h2>
       {description && (
         <p className="x:mb-2 x:dark:text-gray-400 x:text-gray-600">
           {description}
           {readMore && (
-            <Link href={post.route} className="x:ml-2">
+            <Anchor href={post.route} className="x:ml-2">
               {readMore}
-            </Link>
+            </Anchor>
           )}
         </p>
       )}

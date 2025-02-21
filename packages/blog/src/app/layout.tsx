@@ -6,9 +6,9 @@ import { GitHubIcon } from 'nextra/icons'
 import { getPageMap } from 'nextra/page-map'
 import { FC, ReactNode } from 'react'
 import nextSitemapConfig from '../../next-sitemap.config'
-import LinkedInIcon from './_icons/linkedin.svg?svgr'
-import TwitterIcon from './_icons/twitter.svg?svgr'
-import { Footer, Layout, Navbar, ThemeSwitch } from './_nextra-theme'
+import LinkedInIcon from '../icons/linkedin.svg?svgr'
+import TwitterIcon from '../icons/twitter.svg?svgr'
+import { Footer, Layout, Navbar, ThemeSwitch } from '../nextra-theme'
 import './globals.css'
 
 const appName = 'dimaMachina'
@@ -42,7 +42,12 @@ export const metadata: Metadata = {
     url: './',
     locale: 'en_US',
     type: 'website',
-    siteName: appName
+    images: {
+      url: 'https://nextra.site/og?title=Dimitri%20Postolov%0APerosonal%20Website',
+      width: 1200,
+      height: 630,
+    },
+    siteName: appName,
   },
   twitter: {
     site: 'https://x.com/dimaMachina_',
