@@ -1,6 +1,6 @@
+import { Anchor } from 'nextra/components'
 import type { FC } from 'react'
 import type { BlogMetadata } from '../types'
-import { Anchor } from 'nextra/components'
 
 type PostCardProps = {
   post: {

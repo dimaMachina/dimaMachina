@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     'nextra',
     'graphql',
     'graphql-eslint',
-    'graphiql',
+    'graphiql'
   ],
   generator: 'Next.js',
   applicationName: appName,
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     images: {
       url: 'https://nextra.site/og?title=Dimitri%20Postolov%0APerosonal%20Website',
       width: 1200,
-      height: 630,
+      height: 630
     },
-    siteName: appName,
+    siteName: appName
   },
   twitter: {
     site: 'https://x.com/dimaMachina_',

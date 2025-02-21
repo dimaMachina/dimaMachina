@@ -1,9 +1,9 @@
 'use client'
 
+import NextImageExportOptimizer from 'next-image-export-optimizer'
 import { type ImageProps } from 'next/image'
 import { useEffect, useRef, useState, type FC } from 'react'
 import Zoom from 'react-medium-image-zoom'
-import NextImageExportOptimizer from "next-image-export-optimizer";
 
 function getImageSrc(src: ImageProps['src']): string {
   if (typeof src === 'string') {
