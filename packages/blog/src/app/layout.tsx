@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
     images: {
-      url: 'https://nextra.site/og?title=Dimitri%20Postolov%0APerosonal%20Website',
+      url: 'https://nextra.site/og?title=Dimitri%20Postolov%0APersonal%20Website',
       width: 1200,
       height: 630
     },
