@@ -1,2 +1,2 @@
 pnpm-lock.yaml
-packages/blog/app/gallery/images.mdx
+packages/blog/src/app/gallery/images.mdx

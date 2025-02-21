@@ -7,10 +7,11 @@
   "scripts": {
     "build": "next build",
     "dev": "next",
-    "postbuild": "next-sitemap && pagefind --site .next/server/app --output-path public/_pagefind",
+    "postbuild": "next-image-export-optimizer && next-sitemap && pagefind --site .next/server/app --output-path public/_pagefind",
     "start": "next start"
   },
   "dependencies": {
+    "react-medium-image-zoom": "^5.2.14",
     "@next/third-parties": "^15.1.7",
     "next": "15.1.7",
     "next-themes": "^0.4.4",
@@ -21,6 +22,7 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
+    "next-image-export-optimizer": "^1.12.3",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.0.7",
     "@types/react": "19.0.10",
