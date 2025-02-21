@@ -1,4 +1,4 @@
-import { PostCard } from 'nextra-theme-blog'
+import { PostCard } from '../../../nextra-theme'
 import { getPosts, getTags } from '../../blogs/get-posts'
 
 export async function generateMetadata(props) {
@@ -25,7 +25,6 @@ export default async function TagPage(props) {
           post.frontMatter.tags.includes(decodeURIComponent(params.tag))
         )
         .map(post => (
-          // @ts-expect-error -- fixme in Nextra
           <PostCard key={post.route} post={post} />
         ))}
     </>

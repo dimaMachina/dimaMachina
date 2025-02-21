@@ -1,3 +1,8 @@
+import { cloneElement } from 'react'
+import { useMDXComponents } from '../../mdx-components.js'
+import { Bleed as NextraBleed } from 'nextra/components'
+import { Masonry } from '../../components/masonry'
+
 # Gallery
 
 {/* prettier-ignore */}
@@ -8,32 +13,75 @@ https://flickr.com/photos/linuxfoundation/54000552022/in/album-72177720320386221
 https://flickr.com/photos/linuxfoundation/54001900903/in/album-72177720320386221
 */}
 
+<Bleed>
 ## GraphQL Conf 2024
 
-{/* prettier-ignore */}
-![](./graphql-conf-2024-1.jpg)
-![](./graphql-conf-2024-2.jpg)
-![](./graphql-conf-2024-3.jpg)
-![](./graphql-conf-2024-4.jpg)
+</Bleed>
 
+<Grid>
+<>![](./graphql-conf-2024-1.jpg)</>
+<>![](./graphql-conf-2024-3.jpg)</>
+<>![](./graphql-conf-2024-4.jpg)</>
+<>![](./graphql-conf-2024-2.jpg)</>
+
+</Grid>
+
+<Bleed>
 ## GraphQL Conf 2023
+<>![](./graphql-conf-2023.webp)</>
+</Bleed>
 
-![](./graphql-conf-2023.webp)
+{/* <div className="grid grid-cols-3 gap-4 p-4"> */}
 
-## React Amsterdam 2023
+<Bleed>
+  ## React Amsterdam 2023
+</Bleed>
+<Grid>
+<>![](./amsterdam-01.jpeg)</>
+<>![](./amsterdam-02.jpeg)</>
+<>![](./amsterdam-03.jpeg)</>
+<>![](./amsterdam-04.jpeg)</>
+<>![](./amsterdam-05.jpeg)</>
+<>![](./amsterdam-06.jpeg)</>
+<>![](./amsterdam-07.jpeg)</>
+<>![](./amsterdam-08.jpeg)</>
+<>![](./amsterdam-09.jpeg)</>
+<>![](./amsterdam-10.jpeg)</>
+<>![](./amsterdam-11.jpeg)</>
+<>![](./amsterdam-12.jpeg)</>
+<>![](./amsterdam-13.jpg)</>
+<>![](./amsterdam-14.jpg)</>
+</Grid>
 
-{/* prettier-ignore */}
-![](./amsterdam-01.jpeg)
-![](./amsterdam-02.jpeg)
-![](./amsterdam-03.jpeg)
-![](./amsterdam-04.jpeg)
-![](./amsterdam-05.jpeg)
-![](./amsterdam-06.jpeg)
-![](./amsterdam-07.jpeg)
-![](./amsterdam-08.jpeg)
-![](./amsterdam-09.jpeg)
-![](./amsterdam-10.jpeg)
-![](./amsterdam-11.jpeg)
-![](./amsterdam-12.jpeg)
-![](./amsterdam-13.jpg)
-![](./amsterdam-14.jpg)
+{/* </div> */}
+
+export function Bleed({ children }) {
+  return <div className="mx-4"><NextraBleed>{children}</NextraBleed></div>
+}
+
+export function Grid({ children }) {
+  return <Bleed>
+    <Masonry
+    breakpointCols={{ default: 3, 768: 2, 500: 1 }}
+    className="flex gap-4"
+    columnClassName="masonry-column"
+  >
+    {children}
+
+  </Masonry>
+  </Bleed>
+}
+
+export default function MdxLayout(_props) {
+  const { img: Image } = useMDXComponents()
+  return cloneElement(_props.children, {
+    components: {
+      img(props) {
+        return <Image
+          {...props}
+          className="rounded-lg shadow-lg mb-4 mt-0"
+        />
+      }
+    }
+  })
+}
