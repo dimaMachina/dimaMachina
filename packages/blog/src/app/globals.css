@@ -26,22 +26,22 @@
   background-image: linear-gradient(146deg, #fff, #757a7d);
 }
 
-article[class^=quoted-tweet-container_article__] {
+article[class^='quoted-tweet-container_article__'] {
   @apply py-0;
 }
 
 .react-tweet-theme {
-  @apply dark:bg-neutral-900 dark:border-neutral-700;
-  
-  [class^=tweet-replies_link__],
-  [class^=tweet-header_authorFollow__],
-  a[class^=tweet-actions_reply__],
-  [class^=tweet-actions_copy__]{
+  @apply my-0 self-start shadow-lg dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-neutral-800;
+
+  [class^='tweet-replies_link__'],
+  [class^='tweet-header_authorFollow__'],
+  a[class^='tweet-actions_reply__'],
+  [class^='tweet-actions_copy__'],
+  [class^='tweet-in-reply-to_root__'] {
     @apply hidden;
   }
-  
-  [class^=tweet-info_infoLink__] {
-    @apply invisible
+
+  [class^='tweet-info_infoLink__'] {
+    @apply invisible;
   }
 }
-

@@ -196,7 +196,7 @@ export const Tweet: FC<{
   )
 }
 
-export async function getTweets( ids: string[]) {
+export async function getTweets(ids: string[]) {
   if (ids.length === 0) {
     return []
   }
