@@ -1,5 +1,6 @@
 @import 'nextra-theme-blog/style.css';
 @import 'tailwindcss';
+
 @variant dark (&:where(.dark *));
 @plugin "@tailwindcss/typography";
 
@@ -20,6 +21,7 @@
   background-clip: text;
   margin-bottom: 0;
 }
+
 .dark .headline {
   background-image: linear-gradient(146deg, #fff, #757a7d);
 }
@@ -29,5 +31,17 @@ article[class^=quoted-tweet-container_article__] {
 }
 
 .react-tweet-theme {
-  /*--tweet-body-font-size: calc(1.25rem - 10%)*/
+  @apply dark:bg-neutral-900 dark:border-neutral-700;
+  
+  [class^=tweet-replies_link__],
+  [class^=tweet-header_authorFollow__],
+  a[class^=tweet-actions_reply__],
+  [class^=tweet-actions_copy__]{
+    @apply hidden;
+  }
+  
+  [class^=tweet-info_infoLink__] {
+    @apply invisible
+  }
 }
+

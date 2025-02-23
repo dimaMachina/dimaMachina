@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Masonry } from '../../components/masonry'
 import { StaticTweet } from './static-tweet'
+import { MaskingScrollview } from './masking-scrollview'
 
 const TWEET_IDS = [
   // '1854200071358738689',
@@ -20,6 +21,20 @@ const TWEET_IDS = [
 ]
 
 export const Tweets: FC = () => {
+  return <MaskingScrollview
+    outerClassName="mx-[calc(50%-50vw)] px-4"
+    className="nextra-scrollbar relative -m-4 flex flex-row gap-6 p-4 [scrollbar-width:auto] max-sm:overflow-x-auto sm:grid sm:h-[600px] sm:grid-cols-2 sm:overflow-y-auto lg:grid-cols-4"
+    fade="y"
+  >
+    {Array.from({ length: 4 }).map((_, i) => (
+      <div className="contents flex-col gap-6 sm:flex max-lg:[&>:last-child]:flex-1" key={i}>
+        {TWEET_IDS.map((id, j) =>
+          j % 4 === i ?  <StaticTweet key={id} id={id} /> : null,
+        )}
+      </div>
+    ))}
+  </MaskingScrollview>
+
   return (
     <Masonry
       breakpointCols={{ default: 4, 1280: 3, 1024: 2, 678: 1 }}
