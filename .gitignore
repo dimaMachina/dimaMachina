@@ -4,3 +4,4 @@ _pagefind/
 .next/
 out/
 .DS_Store
+.env

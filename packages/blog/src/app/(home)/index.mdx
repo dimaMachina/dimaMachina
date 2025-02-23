@@ -38,3 +38,13 @@ digital nomadism 🏖️.
     <>Dima Machina with GraphQL Stars 2024 award</>
   </figcaption>
 </figcaption>
+
+import { Tweet, getTweets } from '../../components/tweet'
+
+export async function StaticTweet() {
+  const tweets = await getTweets(['1854200071358738689'])
+  const tweet = tweets.find((tweet) => tweet.id === '1854200071358738689')
+  return <Tweet {...tweet} />
+}
+
+<StaticTweet/>

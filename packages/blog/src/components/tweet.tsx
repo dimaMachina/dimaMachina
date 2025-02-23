@@ -1,3 +1,4 @@
+import querystring from 'querystring'
 import comma from 'comma-number'
 import { format } from 'date-fns'
 import Image from 'next/image'
@@ -65,18 +66,18 @@ export const Tweet: FC<{
             height={48}
             width={48}
             src={author.profile_image_url}
+            loader="custom"
             className="rounded-full"
           />
         </a>
         <a
           href={authorUrl}
-          className="author"
+          className="author ml-4 flex flex-col no-underline"
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-4 flex flex-col !no-underline"
         >
           <span
-            className="flex items-center font-bold leading-5 !text-gray-900 dark:!text-gray-100"
+            className="text-gray-900! dark:text-gray-100! flex items-center font-bold leading-5"
             title={author.name}
           >
             {author.name}
@@ -92,7 +93,7 @@ export const Tweet: FC<{
               </svg>
             ) : null}
           </span>
-          <span className="!text-gray-500" title={`@${author.username}`}>
+          <span className="text-gray-500!" title={`@${author.username}`}>
             @{author.username}
           </span>
         </a>
@@ -115,7 +116,7 @@ export const Tweet: FC<{
           </svg>
         </a>
       </div>
-      <div className="mb-1 mt-4 whitespace-pre-wrap text-lg leading-normal !text-gray-700 dark:!text-gray-300">
+      <div className="text-gray-700! dark:text-gray-300! mb-1 mt-4 whitespace-pre-wrap text-lg leading-normal">
         {formattedText}
       </div>
       {media && media.length ? (
@@ -134,7 +135,7 @@ export const Tweet: FC<{
       ) : null}
       {quoteTweet ? <Tweet {...quoteTweet} /> : null}
       <a
-        className="text-sm !text-gray-500 hover:!underline"
+        className="text-gray-500! hover:underline! text-sm"
         href={tweetUrl}
         target="_blank"
         rel="noopener noreferrer"
@@ -146,9 +147,9 @@ export const Tweet: FC<{
           {format(createdAt, 'h:mm a - MMM d, y')}
         </time>
       </a>
-      <div className="mt-2 flex !text-gray-700 dark:!text-gray-300">
+      <div className="text-gray-700! dark:text-gray-300! mt-2 flex">
         <a
-          className="mr-4 flex items-center !text-gray-500 transition hover:!text-blue-600 hover:!underline"
+          className="text-gray-500! hover:text-blue-600! hover:underline! mr-4 flex items-center transition"
           href={replyUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -162,7 +163,7 @@ export const Tweet: FC<{
           <span>{comma(public_metrics.reply_count)}</span>
         </a>
         <a
-          className="mr-4 flex items-center !text-gray-500 transition hover:!text-green-600 hover:!underline"
+          className="text-gray-500! hover:text-green-600! hover:underline! mr-4 flex items-center transition"
           href={retweetUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -176,7 +177,7 @@ export const Tweet: FC<{
           <span>{comma(public_metrics.retweet_count)}</span>
         </a>
         <a
-          className="flex items-center !text-gray-500 transition hover:!text-red-600 hover:!underline"
+          className="text-gray-500! hover:text-red-600! hover:underline! flex items-center transition"
           href={likeUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -192,4 +193,70 @@ export const Tweet: FC<{
       </div>
     </div>
   )
+}
+
+export async function getTweets( ids: string[]) {
+  if (ids.length === 0) {
+    return []
+  }
+
+  const queryParams = querystring.stringify({
+    ids: ids.join(','),
+    expansions:
+      'author_id,attachments.media_keys,referenced_tweets.id,referenced_tweets.id.author_id',
+    'tweet.fields':
+      'attachments,author_id,public_metrics,created_at,id,in_reply_to_user_id,referenced_tweets,text',
+    'user.fields': 'id,name,profile_image_url,protected,url,username,verified',
+    'media.fields':
+      'duration_ms,height,media_key,preview_image_url,type,url,width,public_metrics'
+  })
+  console.log('process.env.TWITTER_API_KEY', process.env.TWITTER_API_KEY)
+  const response = await fetch(
+    `https://api.twitter.com/2/tweets?${queryParams}`,
+    {
+      headers: {
+      },
+      cache: 'force-cache'
+    }
+  )
+
+  const tweets = await response.json()
+
+  if (!response.ok) {
+    throw new Error('\n\n' + JSON.stringify(tweets, null, 2))
+  }
+
+  const getAuthorInfo = author_id => {
+    return tweets.includes.users.find(user => user.id === author_id)
+  }
+
+  const getReferencedTweets = mainTweet => {
+    return (
+      mainTweet?.referenced_tweets?.map(referencedTweet => {
+        const fullReferencedTweet = tweets.includes.tweets.find(
+          tweet => tweet.id === referencedTweet.id
+        )
+
+        return {
+          type: referencedTweet.type,
+          author: getAuthorInfo(fullReferencedTweet.author_id),
+          ...fullReferencedTweet
+        }
+      }) || []
+    )
+  }
+
+  return tweets.data.reduce((allTweets, tweet) => {
+    const tweetWithAuthor = {
+      ...tweet,
+      media:
+        tweet?.attachments?.media_keys.map(key =>
+          tweets.includes.media.find(media => media.media_key === key)
+        ) || [],
+      referenced_tweets: getReferencedTweets(tweet),
+      author: getAuthorInfo(tweet.author_id)
+    }
+
+    return [tweetWithAuthor, ...allTweets]
+  }, [])
 }
