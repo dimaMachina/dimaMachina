@@ -1,3 +1,3 @@
-'use client';
+'use client'
 
-export { default as Masonry} from "react-masonry-css";
+export { default as Masonry } from 'react-masonry-css'

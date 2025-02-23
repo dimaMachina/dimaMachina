@@ -20,12 +20,16 @@ export const Layout: FC<{
   children: ReactNode
   nextThemes?: Omit<ComponentProps<typeof ThemeProvider>, 'children'>
   banner?: ReactElement
-}> = ({ children, nextThemes, banner }) => {
+  className?: string
+}> = ({ children, nextThemes, banner, className = '' }) => {
   return (
     <ThemeProvider attribute="class" {...nextThemes}>
       {banner}
       <article
-        className="x:container x:px-4 x:prose x:max-md:prose-sm x:dark:prose-invert"
+        className={
+          `x:container x:px-4 x:prose x:max-md:prose-sm md:prose-lg x:dark:prose-invert ` +
+          className
+        }
         dir="ltr"
         data-pagefind-body
       >
