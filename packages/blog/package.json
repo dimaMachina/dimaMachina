@@ -23,6 +23,7 @@
     "react-medium-image-zoom": "^5.2.14"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.0.7",
     "@types/react": "19.0.10",
