@@ -1,5 +1,6 @@
 @import 'nextra-theme-blog/style.css';
 @import 'tailwindcss';
+@variant dark (&:where(.dark *));
 @plugin "@tailwindcss/typography";
 
 @theme {
