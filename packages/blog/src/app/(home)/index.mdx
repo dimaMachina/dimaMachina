@@ -32,19 +32,8 @@ I was born in Kharkiv, Ukraine 🇺🇦, and lived there for 20 years before
 emigrating to Paris, France 🇫🇷, where I spent 11 years. Now, I'm embracing
 digital nomadism 🏖️.
 
-<figcaption className="[&_img]:max-h-120 [&_img]:w-auto">
-  <>![](../gallery/graphql-conf-2024-4.jpg)</>
-  <figcaption className="text-center">
-    <>Dima Machina with GraphQL Stars 2024 award</>
-  </figcaption>
-</figcaption>
+import { Tweets } from './tweets'
 
-import { Tweet, getTweets } from '../../components/tweet'
+{/* import { TweetsClient } from './tweets.client' */}
 
-export async function StaticTweet() {
-  const tweets = await getTweets(['1854200071358738689'])
-  const tweet = tweets.find((tweet) => tweet.id === '1854200071358738689')
-  return <Tweet {...tweet} />
-}
-
-<StaticTweet/>
+<Tweets />

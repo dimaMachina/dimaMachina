@@ -66,6 +66,7 @@ export const Tweet: FC<{
             height={48}
             width={48}
             src={author.profile_image_url}
+            // @ts-expect-error -- fixme
             loader="custom"
             className="rounded-full"
           />

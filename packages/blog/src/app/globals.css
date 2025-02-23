@@ -23,3 +23,11 @@
 .dark .headline {
   background-image: linear-gradient(146deg, #fff, #757a7d);
 }
+
+article[class^=quoted-tweet-container_article__] {
+  @apply py-0;
+}
+
+.react-tweet-theme {
+  /*--tweet-body-font-size: calc(1.25rem - 10%)*/
+}
