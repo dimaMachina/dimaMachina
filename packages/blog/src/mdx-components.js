@@ -1,5 +1,5 @@
-import { useMDXComponents as getBlogMDXComponents } from './nextra-theme'
 import { ImageZoom } from './components/image-zoom.tsx'
+import { useMDXComponents as getBlogMDXComponents } from './nextra-theme'
 
 const blogComponents = getBlogMDXComponents({
   h1: ({ children }) => <h1 className="headline">{children}</h1>,
