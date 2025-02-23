@@ -25,7 +25,7 @@ export default async function TagPage(props) {
           post.frontMatter.tags.includes(decodeURIComponent(params.tag))
         )
         .map(post => (
-          <PostCard key={post.route} post={post} />
+          <PostCard key={post.route} post={post} readMore="Read More" />
         ))}
     </>
   )
