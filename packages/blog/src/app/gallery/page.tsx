@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { useMDXComponents } from '../../mdx-components'
-import GalleryPage, { metadata } from './images.mdx'
+import GalleryPage from './images.mdx'
 
 const Page: FC = () => {
   // @ts-expect-error -- fixme
@@ -22,4 +22,5 @@ const Page: FC = () => {
   )
 }
 
-export { metadata, Page as default }
+export { metadata } from './images.mdx'
+export default Page
