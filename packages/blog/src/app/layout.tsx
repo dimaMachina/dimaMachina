@@ -1,10 +1,10 @@
 import { GoogleTagManager } from '@next/third-parties/google'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import NextLink from 'next/link'
 import { Head } from 'nextra/components'
 import { GitHubIcon } from 'nextra/icons'
 import { getPageMap } from 'nextra/page-map'
-import { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import nextSitemapConfig from '../../next-sitemap.config'
 import LinkedInIcon from '../icons/linkedin.svg?svgr'
 import TwitterIcon from '../icons/twitter.svg?svgr'
@@ -14,7 +14,7 @@ import './globals.css'
 const appName = 'dimaMachina'
 
 export const metadata: Metadata = {
-  description: `Dimitri POSTOLOV's website`,
+  description: "Dimitri POSTOLOV's website",
   metadataBase: new URL(nextSitemapConfig.siteUrl),
   keywords: [
     'dimitri postolov',

@@ -5,10 +5,10 @@ import type { ComponentProps, FC, ReactElement, ReactNode } from 'react'
 export const Footer: FC<{
   children?: ReactNode
   className?: string
-}> = ({ children, className = '' }) => {
+}> = ({ children, className }) => {
   return (
     <small
-      className={'x:mt-32 x:block ' + className}
+      className={['x:mt-32 x:block', className].filter(Boolean).join(' ')}
       data-pagefind-ignore="all"
     >
       {children || `CC BY-NC 4.0 ${new Date().getFullYear()} © Shu Ding.`}
@@ -21,15 +21,17 @@ export const Layout: FC<{
   nextThemes?: Omit<ComponentProps<typeof ThemeProvider>, 'children'>
   banner?: ReactElement
   className?: string
-}> = ({ children, nextThemes, banner, className = '' }) => {
+}> = ({ children, nextThemes, banner, className }) => {
   return (
     <ThemeProvider attribute="class" {...nextThemes}>
       {banner}
       <article
-        className={
-          `x:container x:px-4 x:prose x:max-md:prose-sm md:prose-lg x:dark:prose-invert ` +
+        className={[
+          'x:container x:px-4 x:prose x:max-md:prose-sm md:prose-md xl:prose-lg x:dark:prose-invert',
           className
-        }
+        ]
+          .filter(Boolean)
+          .join(' ')}
         dir="ltr"
         data-pagefind-body
       >

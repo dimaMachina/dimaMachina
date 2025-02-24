@@ -1,23 +1,19 @@
 export default {
-  index: {
+  '*': {
     type: 'page'
   },
+  index: '',
   blogs: {
-    type: 'page',
     items: {
       draft: {
         display: 'hidden'
       }
     }
   },
-  gallery: {
-    type: 'page'
-  },
-  talks: {
-    type: 'page'
-  },
+  projects: '',
+  gallery: '',
+  talks: '',
   sponsor: {
-    type: 'page',
     title: 'Sponsor ❤️',
     href: 'https://github.com/sponsors/dimaMachina'
   }

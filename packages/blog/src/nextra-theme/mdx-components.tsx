@@ -27,7 +27,9 @@ const createHeading = (
       <Tag
         id={id}
         // can be added by footnotes
-        className={className === 'sr-only' ? 'x:sr-only' : ''}
+        className={[className === 'sr-only' ? 'x:sr-only' : '', className]
+          .filter(Boolean)
+          .join(' ')}
         {...props}
       >
         {children}

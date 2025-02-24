@@ -5,3 +5,4 @@ _pagefind/
 out/
 .DS_Store
 .env
+sitemap.xml

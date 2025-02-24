@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { Masonry } from '../../components/masonry'
 import { MaskingScrollview } from './masking-scrollview'
 import { StaticTweet } from './static-tweet'
