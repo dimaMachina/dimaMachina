@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useMDXComponents } from '../../mdx-components'
 import GalleryPage, { metadata } from './images.mdx'
 

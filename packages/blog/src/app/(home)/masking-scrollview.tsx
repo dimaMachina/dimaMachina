@@ -1,8 +1,8 @@
 'use client'
 
 import { useMounted } from 'nextra/hooks'
-import { RefObject, useEffect, useReducer, useRef, useState } from 'react'
-import type { FC, ReactNode } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
+import type { FC, ReactNode, RefObject } from 'react'
 
 type MaskingScrollviewProps = {
   fade: 'x' | 'y'

@@ -14,7 +14,7 @@ import './globals.css'
 const appName = 'dimaMachina'
 
 export const metadata: Metadata = {
-  description: `Dimitri POSTOLOV's website`,
+  description: "Dimitri POSTOLOV's website",
   metadataBase: new URL(nextSitemapConfig.siteUrl),
   keywords: [
     'dimitri postolov',

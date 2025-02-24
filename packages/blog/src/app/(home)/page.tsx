@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import IndexPage, { metadata } from './index.mdx'
 
 const Page: FC = () => {

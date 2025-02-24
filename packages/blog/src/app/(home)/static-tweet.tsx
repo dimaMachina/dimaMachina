@@ -1,6 +1,7 @@
+import NextImageExportOptimizer from 'next-image-export-optimizer'
 import { unstable_cache as cache } from 'next/cache'
-import { FC } from 'react'
-import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
+import type { FC } from 'react'
+import { EmbeddedTweet, TweetNotFound } from 'react-tweet'
 import { getTweet as _getTweet } from 'react-tweet/api'
 
 const getTweet = cache(async (id: string) => _getTweet(id), ['tweet'], {

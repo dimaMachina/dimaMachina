@@ -1,8 +1,8 @@
-import querystring from 'querystring'
+import querystring from 'node:querystring'
 import comma from 'comma-number'
 import { format } from 'date-fns'
 import Image from 'next/image'
-import { FC } from 'react'
+import type { FC } from 'react'
 
 /**
  * Supports plain text, images, quote tweets.
