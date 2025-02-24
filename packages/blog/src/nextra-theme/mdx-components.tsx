@@ -22,12 +22,12 @@ import type { BlogMetadata } from './types'
 const createHeading = (
   Tag: `h${2 | 3 | 4 | 5 | 6}`
 ): FC<ComponentProps<typeof Tag>> =>
-  function HeadingLink({ children, id, className, ...props }) {
+  function HeadingLink({ children, id, className = '', ...props }) {
     return (
       <Tag
         id={id}
         // can be added by footnotes
-        className={className === 'sr-only' ? 'x:sr-only' : ''}
+        className={[className === 'sr-only' ? 'x:sr-only' : '', className].filter(Boolean).join(' ')}
         {...props}
       >
         {children}
