@@ -6,7 +6,7 @@ import { getPosts, getTags } from './get-posts'
 export const metadata = {
   title: 'Blog',
   description:
-    'Explore recent blog posts for insights on web development and technology.',
+    "Explore recent Dimitri Postolov's blog posts for insights on web development and technology.",
   asIndexPage: true
 } satisfies NextraMetadata
 

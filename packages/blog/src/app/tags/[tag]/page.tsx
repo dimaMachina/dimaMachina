@@ -3,8 +3,10 @@ import { getPosts, getTags } from '../../blogs/get-posts'
 
 export async function generateMetadata(props) {
   const params = await props.params
+  const tag = decodeURIComponent(params.tag)
   return {
-    title: `Posts Tagged with “${decodeURIComponent(params.tag)}”`
+    title: `Blogs Tagged with “${tag}”`,
+    description: `Explore blogs tagged with “${tag}” by Dimitri Postolov.`
   }
 }
 
