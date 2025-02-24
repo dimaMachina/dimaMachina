@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import type { NextraMetadata } from 'nextra'
-import { PostCard } from '../../nextra-theme/components/post-card'
+import { PostCard } from '../../nextra-theme'
 import { getPosts, getTags } from './get-posts'
 
 export const metadata = {
   title: 'Blog',
+  description:
+    'Explore recent blog posts for insights on web development and technology.',
   asIndexPage: true
 } satisfies NextraMetadata
 
