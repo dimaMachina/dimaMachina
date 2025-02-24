@@ -3,6 +3,7 @@ import { useMDXComponents } from '../../mdx-components'
 import GalleryPage, { metadata } from './images.mdx'
 
 const Page: FC = () => {
+  // @ts-expect-error -- fixme
   const { img: Image } = useMDXComponents()
 
   return (
