@@ -3,6 +3,7 @@ export default {
     type: 'page'
   },
   index: '',
+  projects: '',
   blogs: {
     items: {
       draft: {
@@ -10,7 +11,6 @@ export default {
       }
     }
   },
-  projects: '',
   gallery: '',
   talks: '',
   sponsor: {
