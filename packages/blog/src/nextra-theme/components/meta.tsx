@@ -20,10 +20,10 @@ export const Meta: FC<BlogMetadata & { children: ReactNode }> = ({
 
   return (
     <div
-      className={
-        'x:mb-8 x:flex x:gap-3 ' +
-        (readingTimeText ? 'x:items-start' : 'x:items-center')
-      }
+      className={[
+        'x:mb-8 x:flex x:gap-3',
+        readingTimeText ? 'x:items-start' : 'x:items-center'
+      ].join(' ')}
     >
       <div className="x:grow x:dark:text-gray-400 x:text-gray-600">
         <div className="x:flex x:flex-wrap x:items-center x:gap-1">

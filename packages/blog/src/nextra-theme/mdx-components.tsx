@@ -22,7 +22,7 @@ import type { BlogMetadata } from './types'
 const createHeading = (
   Tag: `h${2 | 3 | 4 | 5 | 6}`
 ): FC<ComponentProps<typeof Tag>> =>
-  function HeadingLink({ children, id, className = '', ...props }) {
+  function HeadingLink({ children, id, className, ...props }) {
     return (
       <Tag
         id={id}

@@ -18,7 +18,7 @@ const Page: FC = () => {
           )
         },
         h3(props) {
-          return <H3 {...props} className="mt-20! *:no-underline" />
+          return <H3 {...props} className="md:mt-16! *:no-underline max-md:mb-4" />
         }
       }}
     />
