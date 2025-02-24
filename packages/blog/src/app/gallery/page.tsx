@@ -13,7 +13,7 @@ const Page: FC = () => {
           return (
             <Image
               {...props}
-              className="mb-4 mt-0 rounded-lg shadow-lg shadow-neutral-400 dark:shadow-neutral-800"
+              className="not-prose mb-4 mt-0 rounded-lg shadow-lg shadow-neutral-400 dark:shadow-neutral-800"
             />
           )
         }
