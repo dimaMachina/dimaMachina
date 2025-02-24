@@ -1,3 +1,4 @@
+import { Anchor } from 'nextra/components'
 import { ImageZoom } from './components/image-zoom'
 import { useMDXComponents as getBlogMDXComponents } from './nextra-theme'
 
@@ -9,7 +10,15 @@ const blogComponents = getBlogMDXComponents({
       month: 'long',
       year: 'numeric'
     })}`,
-  img: ImageZoom
+  img: ImageZoom,
+  a(props) {
+    return (
+      <Anchor
+        {...props}
+        className="decoration-from-font [text-underline-position:from-font] hover:no-underline"
+      />
+    )
+  }
 })
 
 export function useMDXComponents(components) {
