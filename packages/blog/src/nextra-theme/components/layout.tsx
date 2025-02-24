@@ -27,7 +27,7 @@ export const Layout: FC<{
       {banner}
       <article
         className={
-          `x:container x:px-4 x:prose x:max-md:prose-sm md:prose-lg x:dark:prose-invert ` +
+          'x:container x:px-4 x:prose x:max-md:prose-sm md:prose-lg x:dark:prose-invert ' +
           className
         }
         dir="ltr"

@@ -1,18 +1,12 @@
 'use client'
 
 import { useMounted } from 'nextra/hooks'
-import {
-  FC,
-  useEffect,
-  useLayoutEffect,
-  useReducer,
-  useRef,
-  useState
-} from 'react'
+import { RefObject, useEffect, useReducer, useRef, useState } from 'react'
+import type { FC, ReactNode } from 'react'
 
 type MaskingScrollviewProps = {
   fade: 'x' | 'y'
-  children: React.ReactNode
+  children: ReactNode
   className?: string
   outerClassName?: string
 }
@@ -22,9 +16,9 @@ export const MaskingScrollview: FC<MaskingScrollviewProps> = ({
   children,
   className,
   outerClassName,
-  ...rest
+  ...props
 }) => {
-  const scrollviewRef = useRef<HTMLDivElement | null>(null)
+  const scrollviewRef = useRef<HTMLDivElement>(null)
   const { scrolledSides, shouldTransition } = useScrolledSides(scrollviewRef)
 
   // We must only calculate the style on the client to avoid a "prop did not match" error.
@@ -32,7 +26,7 @@ export const MaskingScrollview: FC<MaskingScrollviewProps> = ({
 
   return (
     <div
-      {...rest}
+      {...props}
       className={outerClassName}
       style={
         mounted
@@ -70,11 +64,8 @@ export const MaskingScrollview: FC<MaskingScrollviewProps> = ({
   )
 }
 
-const useClientsideEffect =
-  typeof window === 'undefined' ? () => {} : useLayoutEffect
-
 export function useScrolledSides(
-  scrollviewRef: React.MutableRefObject<HTMLElement | null>,
+  scrollviewRef: RefObject<HTMLElement | null>,
   options: {
     thresholdPx?: number
     disabled?: boolean
@@ -93,7 +84,7 @@ export function useScrolledSides(
   useEffect(() => {
     if (disabled) return
 
-    let timeout: number | undefined
+    let timeout: ReturnType<typeof setTimeout>
 
     const handleScroll = () => {
       const scrollview = scrollviewRef.current
@@ -125,11 +116,10 @@ export function useScrolledSides(
       const scrollview = scrollviewRef.current
 
       if (scrollview) {
-        if (timeout != null) window.clearTimeout(timeout)
-
+        if (timeout) clearTimeout(timeout)
         scrollview.addEventListener('scroll', handleScroll, { passive: true })
       } else {
-        timeout = window.setTimeout(() => addListener(), 1000)
+        timeout = setTimeout(addListener, 1000)
       }
     }
 
@@ -142,7 +132,7 @@ export function useScrolledSides(
     }
   }, [scrolledSides, scrollviewRef, thresholdPx, transitionsAllowed, disabled])
 
-  useClientsideEffect(() => {
+  useEffect(() => {
     if (disabled) return
 
     const scrollview = scrollviewRef.current

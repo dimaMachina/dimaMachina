@@ -32,12 +32,9 @@ export const Meta: FC<BlogMetadata & { children: ReactNode }> = ({
 
           {children}
 
-          {
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- fixme
-            (author || date) && (readingTime || tags?.length) && (
-              <span className="x:px-1">•</span>
-            )
-          }
+          {(author || date) && (readingTime || tags?.length) && (
+            <span className="x:px-1">•</span>
+          )}
           {readingTimeText || tagsEl}
         </div>
         {readingTime && (

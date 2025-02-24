@@ -1,4 +1,4 @@
-import { ImageZoom } from './components/image-zoom.tsx'
+import { ImageZoom } from './components/image-zoom'
 import { useMDXComponents as getBlogMDXComponents } from './nextra-theme'
 
 const blogComponents = getBlogMDXComponents({

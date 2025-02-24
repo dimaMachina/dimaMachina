@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { NextraMetadata } from 'nextra'
+import type { NextraMetadata } from 'nextra'
 import { PostCard } from '../../nextra-theme/components/post-card'
 import { getPosts, getTags } from './get-posts'
 

@@ -3,7 +3,6 @@ import { includeIgnoreFile } from '@eslint/compat'
 import js from '@eslint/js'
 // @ts-expect-error -- no types
 import eslintPluginNext from '@next/eslint-plugin-next'
-import type { Linter } from 'eslint'
 // @ts-expect-error -- no types
 import eslintConfigPrettier from 'eslint-config-prettier'
 import eslintPluginImport from 'eslint-plugin-import-x'
@@ -14,23 +13,10 @@ import * as eslintPluginReactCompiler from 'eslint-plugin-react-compiler'
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
 import eslintPluginSonarJs from 'eslint-plugin-sonarjs'
 // @ts-expect-error -- no types
-import eslintPluginTailwindCss from 'eslint-plugin-tailwindcss'
-// @ts-expect-error -- no types
 import eslintPluginTsSortKeys from 'eslint-plugin-typescript-sort-keys'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import tseslint from 'typescript-eslint'
 import type { Config } from 'typescript-eslint'
-
-const TAILWIND_CONFIG = {
-  extends: [eslintPluginTailwindCss.configs['flat/recommended']],
-  rules: {
-    'tailwindcss/classnames-order': 'off', // conflicts with prettier-plugin-tailwindcss
-    'tailwindcss/enforces-negative-arbitrary-values': 'error',
-    'tailwindcss/enforces-shorthand': 'error',
-    'tailwindcss/migration-from-tailwind-2': 'error',
-    'tailwindcss/no-custom-classname': 'error'
-  } satisfies Linter.RulesRecord
-}
 
 const REACT_COMPILER_RESTRICT = {
   name: 'react',
@@ -46,7 +32,7 @@ const config: Config = tseslint.config(
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
-      eslintPluginUnicorn.configs['flat/recommended'],
+      eslintPluginUnicorn.configs.recommended,
       eslintPluginSonarJs.configs.recommended,
       eslintConfigPrettier
     ],
@@ -197,150 +183,6 @@ const config: Config = tseslint.config(
     rules: {
       'no-restricted-imports': ['error', REACT_COMPILER_RESTRICT],
       'react-compiler/react-compiler': 'error'
-    }
-  },
-  // ⚙️ nextra-theme-docs
-  {
-    ...TAILWIND_CONFIG,
-    files: ['packages/nextra-theme-docs/**'],
-    settings: {
-      tailwindcss: {
-        callees: ['cn'],
-        whitelist: [
-          'nextra-navbar',
-          'nextra-navbar-blur',
-          'nextra-sidebar',
-          'nextra-breadcrumb',
-          'nextra-sidebar-footer',
-          'nextra-toc'
-        ]
-      }
-    },
-    rules: {
-      ...TAILWIND_CONFIG.rules,
-      'no-restricted-imports': [
-        'error',
-        { name: 'next/link', message: 'Use `<Anchor>` instead' },
-        REACT_COMPILER_RESTRICT
-      ],
-      // False positive due Tailwind CSS v4
-      'tailwindcss/no-custom-classname': 'off'
-    }
-  },
-  // ⚙️ nextra-theme-blog
-  {
-    ...TAILWIND_CONFIG,
-    files: ['packages/nextra-theme-blog/**'],
-    rules: {
-      ...TAILWIND_CONFIG.rules,
-      'no-restricted-imports': [
-        'error',
-        {
-          name: 'next/link',
-          message: 'Use `<Link>` from `next-view-transitions` instead'
-        },
-        {
-          name: 'next/navigation',
-          importNames: ['useRouter'],
-          message:
-            'Use `useTransitionRouter` from `next-view-transitions` instead'
-        }
-      ],
-      // False positive due Tailwind CSS v4
-      'tailwindcss/no-custom-classname': 'off'
-    }
-  },
-  // ⚙️ nextra
-  {
-    ...TAILWIND_CONFIG,
-    files: ['packages/nextra/**'],
-    settings: {
-      tailwindcss: {
-        callees: ['cn'],
-        whitelist: [
-          'nextra-code',
-          'nextra-filetree',
-          'nextra-bleed',
-          'nextra-skip-nav',
-          'nextra-search-results'
-        ]
-      }
-    },
-    rules: {
-      ...TAILWIND_CONFIG.rules,
-      'import/extensions': ['error', 'ignorePackages'],
-      // False positive due Tailwind CSS v4
-      'tailwindcss/no-custom-classname': 'off'
-    }
-  },
-  // ⚙️ Docs
-  {
-    ...TAILWIND_CONFIG,
-    files: ['docs/**'],
-    settings: {
-      tailwindcss: {
-        callees: ['cn'],
-        whitelist: [
-          'dash-ring',
-          'theme-1',
-          'theme-2',
-          'theme-3',
-          'theme-4',
-          'subtitle',
-          'headline',
-          'content-container',
-          'feat-darkmode',
-          'features-container',
-          // New in TailwindCSS v4
-          'z-1',
-          'z-2',
-          '.*nextra-focus' // I can't ignore colon `:`, use `*` instead
-        ],
-        cssFiles: [
-          'docs/app/globals.css',
-          'docs/app/_components/features/style.module.css',
-          'packages/nextra-theme-docs/dist/style.css'
-        ]
-      },
-      next: { rootDir: 'docs' }
-    }
-  },
-  // ⚙️ SWR-site example
-  {
-    ...TAILWIND_CONFIG,
-    files: ['examples/swr-site/**'],
-    settings: {
-      tailwindcss: {
-        cssFiles: [
-          'examples/swr-site/app/[lang]/styles.css',
-          'examples/swr-site/app/_components/features.css',
-          'packages/nextra-theme-docs/dist/style.css'
-        ],
-        whitelist: [
-          '.*nextra-focus' // I can't ignore colon `:`, use `*` instead
-        ]
-      },
-      next: { rootDir: 'examples/swr-site' }
-    }
-  },
-  // ⚙️ blog example
-  {
-    files: ['examples/blog/**'],
-    settings: {
-      next: { rootDir: 'examples/blog' }
-    }
-  },
-  // ⚙️ docs example
-  {
-    files: ['examples/docs/**'],
-    settings: {
-      next: { rootDir: 'examples/docs' }
-    }
-  },
-  {
-    files: ['**/*.d.ts'],
-    rules: {
-      'no-var': 'off'
     }
   }
 )

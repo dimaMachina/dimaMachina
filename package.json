@@ -5,7 +5,7 @@
   "private": true,
   "packageManager": "pnpm@9.15.2",
   "scripts": {
-    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint --config packages/eslint-config/src/index.ts --cache --max-warnings 0 --flag unstable_ts_config .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint --config packages/eslint-config/src/index.ts --cache --cache-location node_modules/.cache --max-warnings 0 --flag unstable_ts_config .",
     "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "prettier": "pnpm lint:prettier --write"
   },
