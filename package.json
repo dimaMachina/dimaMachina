@@ -3,7 +3,7 @@
   "author": "Dimitri POSTOLOV",
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "lint": "eslint --config packages/eslint-config/src/index.ts --cache --cache-location node_modules/.cache --max-warnings 0 .",
     "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
